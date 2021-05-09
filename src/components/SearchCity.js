@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { TextInput, Card, List } from 'react-native-paper';
-
+import { StyleSheet, ScrollView, View } from 'react-native';
+import { TextInput, Card, List, Button } from 'react-native-paper';
 
 const SearchCity = () => {
     
@@ -27,7 +26,7 @@ const SearchCity = () => {
             })
     }
 
-    let allCities = <Card><List.Item title="No city selected" /></Card>
+    let allCities = <Card style={styles.card}><List.Item title="No city selected" /></Card>
     if (cities.length > 0) {
         allCities = cities.map((city) => {
             return (
@@ -38,6 +37,7 @@ const SearchCity = () => {
 
     return (
         <>
+           
             <TextInput
                 label="Select City"
                 value={text}
@@ -46,6 +46,14 @@ const SearchCity = () => {
             <ScrollView>
                 {allCities}
             </ScrollView>
+
+            <View>
+                <Button class={styles.button} icon="camera" mode="contained" 
+                onPress={() => alert('Pressed')}
+                onLongPress={() => alert('Long Pressed')}
+                >Press me</Button>
+            </View>
+
         </>
     );
 };
@@ -54,6 +62,10 @@ const styles = StyleSheet.create({
     card: {
         margin: 5,
         marginTop: 0,
+    },
+    camera: {
+        margin: 40,
+        padding: 50,
     }
 });
 
